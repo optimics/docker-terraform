@@ -9,4 +9,5 @@ A fruitful image that puts together several tools to make Continuous Deliveries 
 
 * [git](https://git-scm.com/)
 * [Google Cloud SDK](https://cloud.google.com/sdk/)
+* [Node.JS](https://nodejs.org/)
 * [Terraform](https://www.terraform.io/cli/commands)
