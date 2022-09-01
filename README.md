@@ -37,7 +37,7 @@ definitions:
   steps:
     - step: &deploy
         name: Deploy Infrastructure
-        image: optimics/terraform:0.2
+        image: optimics/terraform:0.4
         script:
           - . descope-env
           - init-gcs
