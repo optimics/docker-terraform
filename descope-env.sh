@@ -1,4 +1,7 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
+
+set -e
+
 PROJECT_ENVIRONMENT="$1"
 
 if [ "${PROJECT_ENVIRONMENT}" = "" ]
@@ -11,6 +14,7 @@ then
   is_semver_tag=$(echo ${BITBUCKET_TAG} | grep "^v")
   if [ "${is_semver_tag}" != "" ]
   then
+    echo "Detected semver tag"
     PROJECT_ENVIRONMENT=PRODUCTION
   fi
 fi
@@ -20,6 +24,7 @@ fi
 # For example: STAGING_DEPLOY_CREDENTIALS -> DEPLOY_CREDENTIALS
 if [ "${PROJECT_ENVIRONMENT}" != "" ]
 then
+  echo "Using environment '${PROJECT_ENVIRONMENT}'"
   env_prefix="${PROJECT_ENVIRONMENT}"
   env_specific=$(printenv | grep "^${env_prefix}_" | cut -d '=' -f1)
   for var_name in $env_specific; do
