@@ -11,8 +11,7 @@ then
 
   # If this Pipeline runs on a semver tag, consider this
   # the production environment.
-  is_semver_tag=$(echo ${BITBUCKET_TAG} | grep "^v")
-  if [ "${is_semver_tag}" != "" ]
+  if [ "${BITBUCKET_TAG}" != "" ] && [ "$(echo "${BITBUCKET_TAG}" | grep "^v")" != "" ]
   then
     echo "Detected semver tag"
     PROJECT_ENVIRONMENT=PRODUCTION
@@ -35,3 +34,5 @@ then
     echo "Applied ${env_name}"
   done
 fi
+
+set +e
