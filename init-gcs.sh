@@ -2,6 +2,13 @@
 
 set -e
 
+# If there is a terraform dir, assume that all of terraform lives there
+if [ -d terraform ]
+then
+  echo "Entering terraform dir"
+  cd terraform
+fi
+
 # Write contents of TF_VAR_GOOGLE_CREDENTIALS into a file to initialize 
 # the Google Cloud Storage Terraform Backend.
 if [ "${TF_VAR_GOOGLE_CREDENTIALS}" != "" ]
@@ -16,12 +23,6 @@ then
 else
   echo "TF_VAR_GOOGLE_CREDENTIALS is not set"
   exit 2
-fi
-
-# If there is a terraform dir, assume that all of terraform lives there
-if [ -d terraform ]
-then
-  cd terraform
 fi
 
 # Initialize terraform backend
