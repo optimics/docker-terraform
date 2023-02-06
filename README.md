@@ -26,6 +26,10 @@ echo $MYSQL_PASSWORD
 
 First argument to this script is the actual environment. It can be omitted and passed as `PROJECT_ENVIRONMENT` env variable instead. If none is set, descope-env considers it the staging environment. If the variable `BITBUCKET_TAG` contains semver tag, it is considered the production environment.
 
+### with package.json
+
+Given `package.json` is present in the working directory, the `descope-env` will apply any key/value pairs from the `env` section into current environment.
+
 ## `init-gcs`
 
 Also a tiny script that initializes Terraform Google Cloud Storage Backend and sets up a service account based on the credentials stored in `TF_VAR_GOOGLE_CREDENTIALS`. It takes no arguments. Make sure the `TF_VAR_BUCKET_TERRAFORM` contains the terraform state bucket.

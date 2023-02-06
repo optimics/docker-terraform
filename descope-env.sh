@@ -18,6 +18,17 @@ then
   fi
 fi
 
+# If we have jq and package.json, then read environment variables
+package_path="./package.json"
+if [ $( which jq ) ] && [ -f $package_path ]; then
+  echo "Checking variables from '${package_path}'"
+  vars=$(cat $package_path | jq -c .env | jq -r 'keys[] as $k | "\($k)=\(.[$k])"')
+  for item in $vars; do
+    export $item
+    echo "Imported $(echo $item | cut -d '=' -f1)"
+  done
+fi
+
 # Consume environment specific variables
 # This part de-prefixes variables prefixed with environment name
 # For example: STAGING_DEPLOY_CREDENTIALS -> DEPLOY_CREDENTIALS
