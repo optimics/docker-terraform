@@ -22,11 +22,14 @@ fi
 package_path="./package.json"
 if [ $( which jq ) ] && [ -f $package_path ]; then
   echo "Checking variables from '${package_path}'"
-  vars=$(cat $package_path | jq -c .env | jq -r 'keys[] as $k | "\($k)=\(.[$k])"')
-  for item in $vars; do
-    export $item
-    echo "Imported $(echo $item | cut -d '=' -f1)"
-  done
+  vars=$(cat $package_path | jq -c .env)
+  if [[ "$vars" != "null" ]]; then
+    vars=$(echo $vars | jq -r 'keys[] as $k | "\($k)=\(.[$k])"')
+    for item in $vars; do
+      export $item
+      echo "Imported $(echo $item | cut -d '=' -f1)"
+    done
+  fi
 fi
 
 # Consume environment specific variables
