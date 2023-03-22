@@ -1,6 +1,6 @@
 FROM alpine:3.17
 
-RUN apk add --update bash curl git python3 which 'nodejs=18.12.1-r0' 'jq=1.6-r2' 'terraform=1.3.4-r1' npm
+RUN apk add --update bash curl git python3 which 'nodejs=18.14.2-r0' 'jq=1.6-r2' 'terraform=1.3.4-r1' npm
 RUN curl -sSL https://sdk.cloud.google.com | bash
 
 COPY ./descope-env.sh /usr/local/bin/descope-env
