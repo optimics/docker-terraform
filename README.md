@@ -10,8 +10,9 @@ A fruitful image that puts together several tools to make Continuous Deliveries 
 * [git](https://git-scm.com/)
 * [Google Cloud SDK](https://cloud.google.com/sdk/)
 * [Node.JS](https://nodejs.org/) with [npm](https://www.npmjs.com/)
-* [Terraform](https://www.terraform.io/cli/commands)
 * [descope-env](./descope-env.sh)
+* [Poetry](https://python-poetry.org/)
+* [Terraform](https://www.terraform.io/cli/commands)
 
 ## `descope-env`
 
