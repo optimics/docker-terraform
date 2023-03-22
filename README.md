@@ -11,6 +11,7 @@ A fruitful image that puts together several tools to make Continuous Deliveries 
 * [Google Cloud SDK](https://cloud.google.com/sdk/)
 * [Node.JS](https://nodejs.org/) with [npm](https://www.npmjs.com/)
 * [descope-env](./descope-env.sh)
+* [init-gcs](./init-gcs.sh)
 * [Poetry](https://python-poetry.org/)
 * [Terraform](https://www.terraform.io/cli/commands)
 
