@@ -16,6 +16,18 @@ then
     echo "Detected semver tag"
     PROJECT_ENVIRONMENT=PRODUCTION
   fi
+
+  # If this pipeline contains deployment variable and it has environment
+  # behind last dash, attempt to extract the environment from there, mapping:
+  # * -sg -> STAGING
+  # * -pn -> PRODUCTION
+  # * -le -> PRODUCTION
+  env_bitbucket=$(echo $BITBUCKET_DEPLOYMENT_ENVIRONMENT | rev | cut -d '-' -f1 | rev)
+  if [ "${env_bitbucket}" == "sg" ]; then
+    PROJECT_ENVIRONMENT=STAGING
+  elif [ "${env_bitbucket}" == "pn" ] || [ "${env_bitbucket}" == "le" ]; then
+    PROJECT_ENVIRONMENT=PRODUCTION
+  fi
 fi
 
 # If we have jq and package.json, then read environment variables
