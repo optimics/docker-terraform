@@ -34,3 +34,5 @@ else
   echo "TF_VAR_BUCKET_TERRAFORM is not set"
   exit 3
 fi
+
+set +e
