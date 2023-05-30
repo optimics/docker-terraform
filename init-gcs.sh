@@ -14,7 +14,7 @@ fi
 if [ "${TF_VAR_GOOGLE_CREDENTIALS}" != "" ]
 then
   export GOOGLE_APPLICATION_CREDENTIALS=$(realpath ./terraform-credentials.json)
-  echo "$TF_VAR_GOOGLE_CREDENTIALS" > $GOOGLE_APPLICATION_CREDENTIALS
+  echo -E "$TF_VAR_GOOGLE_CREDENTIALS" > $GOOGLE_APPLICATION_CREDENTIALS
   echo "Stored GCP credentials into $GOOGLE_APPLICATION_CREDENTIALS"
 
   # Activate the Service Account to enable gcloud access
