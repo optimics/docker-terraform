@@ -13,8 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     steps:
-      - uses: actions/checkout@v2
-      - uses: crazy-max/ghaction-docker-meta@v2
+      - uses: actions/checkout@v3
+      - uses: docker/metadata-action@v4
         id: meta
         with:
           images: optimics/terraform
